@@ -37,8 +37,9 @@ verify_kustomize_version()
                 mkdir -p "${BIN_ROOT}"
             fi
             archive_name="kustomize-v${MINIMUM_KUSTOMIZE_VERSION}.tar.gz"
-            curl -sLo "${BIN_ROOT}/${archive_name}" "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${MINIMUM_KUSTOMIZE_VERSION}/kustomize_v${MINIMUM_KUSTOMIZE_VERSION}_${goos}_${goarch}.tar.gz"
-            tar -zvxf "${BIN_ROOT}/${archive_name}" -C "${BIN_ROOT}/"
+            #curl -sLo "${BIN_ROOT}/${archive_name}" "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${MINIMUM_KUSTOMIZE_VERSION}/kustomize_v${MINIMUM_KUSTOMIZE_VERSION}_${goos}_${goarch}.tar.gz"
+            cp ./dependencies/kustomize_v4.4.1_linux_amd64.tar.gz "${BIN_ROOT}/${archive_name}"
+	    tar -zvxf "${BIN_ROOT}/${archive_name}" -C "${BIN_ROOT}/"
             chmod +x "${BIN_ROOT}/kustomize"
             rm "${BIN_ROOT}/${archive_name}"
         elif [[ "${OSTYPE}" == "darwin"* ]]; then
